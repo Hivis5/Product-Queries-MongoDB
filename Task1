@@ -204,11 +204,5 @@ Find products which contain product colour indigo  and product price 492.00
 
 
 Delete the products which product price value are same
-Let grouped_data = db.collection.aggregate([{$group: {_id:”$product_price”,count:{$count:{}}}},{$match:{_id:{$ne:null},count:{$gt:1}}}]).toArray()
-Let duplicate_product_price=[ ]
-
-grouped_data.map((e)=>{
-duplicate_product_price.push(e._id)
-})
-
-Let delete = db.details.deleteMany({product_price:{$in:`${duplicate_product_price}`})
+Querry1: db.collection.aggregate([{$group: {_id:"$product_price",count:{$count:{}}}},{$match:{_id:{$ne:null},count:{$gt:1}}}]).toArray()
+Querry2: db.collection.deleteMany({product_price:{$in:[36,37]}})
